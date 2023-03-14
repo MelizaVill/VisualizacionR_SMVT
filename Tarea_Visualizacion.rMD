@@ -1,0 +1,98 @@
+---
+title: '**TAREA_CURSO_R**'
+subtitle: '**Visualización**'
+author: "Sthefanny Meliza Villa Toledo"
+date: "2023-03-03"
+output: html_document
+---
+
+```{r}
+# Instalar librerías requeridas
+library(readr)
+library(RCurl)
+library(ggplot2)
+library(dplyr)
+library(ggpubr)
+library(datasets)
+library(gridExtra)
+```
+
+## R Markdown
+
+Sthefanny Villa - `sthefanny.villa@est.ikiam.edu.ec` - Universidad Regional Amazónica IKIAM, Tena (Ecuador)
+
+# Tarea Visualizacion
+
+**¿Qué es una buena visualización?**
+
+Es algo que cautiva a la audiencia y refuerza el mensaje que se desea comunicar. Para ello se debe identificar lo siguiente:
+
+-   El mensaje utilizando la visualización exploratoria.
+
+-   La mejor representación para el mensaje.
+
+-   La apariencia que mejor resalta los hallazgos.
+
+-   Mensajes adicionales apropiados.
+
+**¿Cómo se logra una buena visualización?**
+
+Empleando los elementos adecuados en el diseño de la visualización de datos. Estos elementos fueron compilados y establecidos por Leland Wilkinson en su libro "The grammar of graphics: statistcs and computing".
+Se tiene dos tipos de visualizaciones concatenadas: **Visualización de análisis - visualización de presentación**
+
+-   **Visualización de Análisis**, para tener una primera impresión de los patrones, tendencias que ayudan a describir e interpretar el tipo de data. Aquí aplica la regla de 20 - 80, donde se tiene un **20%** de tiempo en análisis para obtener el **80%** de resultados esperados.
+
+-   **Visualización de Presentación**, donde se realiza el diseño (tipos de geom(), colores, tamaños, ejes, leyendas, agrupaciones) adecuado, se resalta lo importante y se ilustra un mensaje. Aquí se aplica la regla 80 - 20, donde se dedica un **80%** de tiempo en la actividad para obtener el **80%** de resultados esperados.
+    ggplot(data = <DATA>) + 
+          <geom>(mapping = aes(<MAPPINGS>),stat = <ESTADISTICAS>, position = <POSICION> ) + <coordinates> + <facet> + <theme>
+          
+# Instrucciones
+
+Use un documento tipo *.Rmd* o *.qmd* y genere un informe *html.* Estos dos documentos (Rmd y html) guardelos con control de cambios en un repositorio de GitHub y **pegue solamente el enlace del repositorio** en esta entrega. La entrega debe contener los códigos para obtener las siguientes figuras:
+
+## Data
+Son datos preinstalados en R.
+
+```{r, dientes}
+## **ToothGrowth:** contiene la longitud de los odontoblastos (células responsables del crecimiento dental) en 60 cobayos. Cada animal recibió uno de tres niveles de dosis de vitamina C (0.5, 1 y 2 mg/día) por uno de dos métodos de entrega, jugo de naranja o ácido ascórbico (una forma de vitamina C y codificada como VC). Tiene 60 observaciones y 3 variables: len (longitud del diente), supp (tipo de suplemento) y dose (dosis de vitamina C).
+data("ToothGrowth")
+head(ToothGrowth, n=4)
+```
+```{r, carros}
+##**mtcars:** contiene el consumo de combustible y 10 aspectos del diseño y rendimiento del automóvil para 32 automóviles (modelos 1973-74). Tiene 32 observaciones y 11 variables numéricas: mpg (millas por galón), cyl (número de cilindros), disp (desplazamiento del motor), hp (caballos de fuerza), drat (relación del eje trasero), wt (peso), qsec (tiempo en el cuarto de milla), vs (forma del motor), am (transmisión manual o automática), gear (número de marchas) y carb (número de carburadores).
+
+data("mtcars")
+head(mtcars, n=4)
+```
+```{r, diamantes}
+##Diamonds: contiene las mediciones sobre 10 variables diferentes para 53.940 diamantes. Tiene 53.940 observaciones y 10 variables: price(precio en dólares estadounidenses), carat(peso del diamante en quilates), cut(calidad del corte: Fair, Good, Very Good, Premium o Ideal), color(color del diamante desde J(peor) hasta D(mejor)), clarity(claridad desde I1(peor) hasta IF(mejor)), x(longitud en mm.), y(ancho en mm.), z(profundidad en mm.), depth(profundidad total porcentual = z / media(x,y)), table(ancho superior relativo al punto más ancho).)
+
+data("diamonds")
+head(diamonds, n=4)
+```
+
+##  1. Réplica de la figura compuesta.
+```{r, results='hide'}
+## Cambio en cy1 a variable categorica y no numerica
+data("mtcars")
+mtcars$name  = rownames(mtcars)
+mtcars$cyl  = as.factor(mtcars$cyl)
+
+head(mtcars[, c("name", "wt", "mpg", "cyl")])
+```
+```{r}
+#Barplot por registro
+## se definen los datos y las variables + se crea las barras +  se mueve la leyenda a la izquierda + se rota los nombres del eje x + se pone el título
+cars<-ggplot(mtcars, aes(x = name, y = mpg, fill = cyl)) + 
+  geom_bar(stat = "identity", position = "dodge") + 
+  theme(legend.position = "left", 
+        axis.text.x = element_text(angle = 90)) + 
+  labs(title = "Consumo de combustible por modelo", 
+       x = "Modelo", # se agrega el nombre del eje x
+       y = "Millas por galón", # se agrega el nombre del eje y
+       fill = "Cilindros")+ # se agrega el nombre de la leyenda
+      theme(axis.text = element_text(size = 8),
+            axis.title = element_text(size = 8),
+            title = element_text(size = 8))
+cars
+```
