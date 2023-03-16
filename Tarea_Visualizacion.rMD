@@ -80,10 +80,10 @@ mtcars$cyl  = as.factor(mtcars$cyl)
 
 head(mtcars[, c("name", "wt", "mpg", "cyl")])
 ```
-```{r}
+```{r, barplot}
 #Barplot por registro
 ## se definen los datos y las variables + se crea las barras +  se mueve la leyenda a la izquierda + se rota los nombres del eje x + se pone el título
-cars<-ggplot(mtcars, aes(x = name, y = mpg, fill = cyl)) + 
+cars1<-ggplot(mtcars, aes(x = name, y = mpg, fill = cyl)) + 
   geom_bar(stat = "identity", position = "dodge") + 
   theme(legend.position = "left", 
         axis.text.x = element_text(angle = 90)) + 
@@ -94,5 +94,32 @@ cars<-ggplot(mtcars, aes(x = name, y = mpg, fill = cyl)) +
       theme(axis.text = element_text(size = 8),
             axis.title = element_text(size = 8),
             title = element_text(size = 8))
-cars
+cars1
+```
+```{r, barplot}
+cars2<-ggplot(mtcars, aes(x = reorder(name, mpg), y = mpg, fill = cyl)) + 
+  geom_bar(stat = "identity", position = "dodge") + 
+  theme(legend.position = "left", 
+        axis.text.x = element_text(angle = 90)) + 
+  labs(title = "Consumo de combustible por modelo y cilindro", x = "Modelo", y = "Millas por galón", 
+       fill = "Cilindros")+ 
+      theme(axis.text = element_text(size = 8),
+            axis.title = element_text(size = 8),
+            title = element_text(size = 8))
+cars2
+```
+
+```{r}
+##Densidades
+data("diamonds")
+dens<- ggplot(diamonds, aes(x = depth, fill = cut)) + geom_density(alpha = 0.2) + theme(legend.position = "left", 
+        axis.text.x = element_text(angle = 90)) +
+  labs(title = "Distribución de la profundidad según el corte", x = "Profundidad", y = "Densidad") +
+  theme_classic() +
+  xlim(54,64) +
+  theme(axis.text = element_text(size = 8),
+            axis.title = element_text(size = 8),
+            title = element_text(size = 8))
+
+dens
 ```
