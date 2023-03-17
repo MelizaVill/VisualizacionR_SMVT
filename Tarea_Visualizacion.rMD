@@ -176,5 +176,28 @@ Z <- zoom1 + annotation_custom(ggplotGrob(zoom2), xmin = 1, xmax = 2, ymin = -0.
 Z
 ```
 
+```{r}
+## Grafica de calor
+Calor <- ggplot(faithfuld, aes(eruptions, waiting)) +
+  geom_raster(aes(fill = density))+
+  theme_classic2()+ 
+  scale_fill_gradientn(colours = heat.colors(8, rev = TRUE), na.value = "lightblue1") +
+  labs(title = "Datos del géiser Old Faithful", x = "Tiempo de espera hasta la próxima erupción (en minutos)", y = "Tiempo de erupción (en minutos)", fill = "density")+
+            theme(axis.text = element_text(size = 8),
+            axis.title = element_text(size = 8),
+            title = element_text(size = 8))
+Calor
+```
+```{r}
+##Graficas Unidas
+Completo =
+  ggarrange(cars2, ggarrange(dens,ggarrange(Z, Puntos,dispercion, Calor, ncol = 2, nrow = 2, 
+                                labels = c("B", "C", "D", "E")),ncol = 2, 
+                             labels = "F"), labels = "A", nrow = 2, common.legend = TRUE) +
+theme(axis.text = element_text(size = 6),
+            axis.title = element_text(size = 6),
+            title = element_text(size = 6))
+Completo
+```
 
 
