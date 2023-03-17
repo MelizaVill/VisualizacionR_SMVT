@@ -237,24 +237,26 @@ dfp1 <- df_gapminder %>%
 dfp1
 ```
 
-  
-dfp2 =
-  ggplot(df_g, aes(x = gdpPercap, y = lifeExp, 
+```{r}
+#grafico de algunos paises
+dfp2 = ggplot(df_gapminder, aes(x = gdpPercap, y = lifeExp, 
              size=pop, color=continent)) +
   geom_point() + 
   geom_text_repel(aes(label=country), size = 1.5) +
-  scale_x_continuous(limits = c(5000, 8000)) +
+  scale_x_continuous(limits = c(3000, 5000)) +
   scale_y_continuous(limits = c(70, 80)) +
   guides(size=FALSE) + 
-  
-  theme(legend.position = "none",
+  theme(legend.position = "null",
         axis.title = element_blank(),
         legend.title = element_text(face = "bold", color = "black", size= 8), 
-        panel.background = element_rect(fill = "white", colour = "grey80"), 
-        panel.grid.major = element_line(colour = "grey90", linetype = "dotted"))
+        panel.background = element_rect(fill = "lightblue1", colour = "brown2"), 
+        panel.grid.major = element_line(colour = "brown3", linetype = "dotted"))
+dfp2
+```
+
+```{r}
 embeb = esp1 + annotation_custom(ggplotGrob(esp2), 
-                            xmin = 20000, xmax = 30000, 
-                            ymin = 40, ymax = 60)
+                        xmin = 30000, xmax = 50000, 
+                        ymin = 40, ymax = 70)
 embeb
-  
 ```
