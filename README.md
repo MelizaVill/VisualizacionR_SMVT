@@ -13,14 +13,14 @@ Este repositorio replican y analizan algunas gráficas que muestran la relación
 * Memoria instalada: 3,00 GB
 * Tipo de sistema Operativo: Sistema operativo de 64 bits, procesador basado en x64
 ## Librerias utilizadas 
-*****-ggpubr : Librería para crear gráficos elegantes con ggplot2.*****
-*****-patchwork: Librería para combinar varios gráficos de ggplot2.*****
-*****-ggplot2: Librería para crear gráficos avanzados con una gramática específica.*****
-*****-grid: Librería para manipular regiones y diseños de gráficos.*****
-*****-cowplot: Librería para organizar múltiples gráficos y añadir anotaciones.*****
-*****-gridExtra: Librería para organizar varios gráficos en una sola página.*****
-*****-ggrepel: Librería para evitar la superposición de etiquetas de texto en los gráficos.*****
-*****-dplyr: Librería para manipular datos con funciones verbales.*****
+***-ggpubr:*** Librería para crear gráficos elegantes con ggplot2.
+***-patchwork:*** Librería para combinar varios gráficos de ggplot2.
+***-ggplot2:*** Librería para crear gráficos avanzados con una gramática específica.
+***-grid:*** Librería para manipular regiones y diseños de gráficos.
+***-cowplot:*** Librería para organizar múltiples gráficos y añadir anotaciones.
+***-gridExtra:*** Librería para organizar varios gráficos en una sola página.
+***-ggrepel:*** Librería para evitar la superposición de etiquetas de texto en los gráficos.
+***-dplyr:*** Librería para manipular datos con funciones verbales.
 ## Data utilizada
 **ToothGrowth:** contiene la longitud de los odontoblastos (células responsables del crecimiento dental) en 60 cobayos. Cada animal recibió uno de tres niveles de dosis de vitamina C (0.5, 1 y 2 mg/día) por uno de dos métodos de entrega, jugo de naranja o ácido ascórbico (una forma de vitamina C y codificada como VC). Tiene 60 observaciones y 3 variables: len (longitud del diente), supp (tipo de suplemento) y dose (dosis de vitamina C).
 
