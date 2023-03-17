@@ -123,3 +123,15 @@ dens<- ggplot(diamonds, aes(x = depth, fill = cut)) + geom_density(alpha = 0.2) 
 
 dens
 ```
+
+```{r}
+## Gráfica de dispersión
+
+dispercion <- ggscatter(mtcars, x = "wt", y = "mpg", add = "reg.line", conf.int = TRUE, color = "cyl", palette = "jco", shape = "cyl") + 
+  stat_cor(aes(color = cyl), label.x = 3) + 
+  labs(title= "Relacion peso y consumo de combustible",x = "Peso del coche", y = "Millas por galon") + 
+  theme(axis.text = element_text(size = 8),
+            axis.title = element_text(size = 8),
+            title = element_text(size = 8))
+dispercion
+```
