@@ -72,6 +72,7 @@ head(diamonds, n=4)
 ```
 
 ##  1. Réplica de la figura compuesta.
+
 ```{r, results='hide'}
 ## Cambio en cy1 a variable categorica y no numerica
 data("mtcars")
@@ -201,3 +202,59 @@ Completo
 ```
 
 
+## 2. Réplica de la figura embebida
+Datos "Gapminder", que es un conjunto de datos ampliamente utilizado en la enseñanza y la investigación de la ciencia de datos, tiene informacion sobre la expectativa de vida, la población y el ingreso per cápita de diferentes países del mundo, entre 1952 y 2007. El conjunto de datos incluye información sobre 142 países diferentes.
+Gapminder. (2008). Gapminder World 2008 (v. 1.0) [Data set]. https://www.gapminder.org/data/
+
+```{r}
+library(dplyr)
+library(ggplot2)
+library(grid)
+library(gridExtra)
+library(ggrepel)
+```
+
+```{r}
+# Para cargar la data, lo que deseamos visualizar
+ruta <- "https://raw.githubusercontent.com/martintinch0/CienciaDeDatosParaCuriosos/master/data/gapminder.csv"
+df_gapminder <- read.table(file = ruta, sep=';', header = TRUE, stringsAsFactors = FALSE)
+```
+
+```{r}
+# Grafico con todos los paises
+dfp1 <- df_gapminder %>% 
+  filter(year == 2007) %>% 
+  ggplot(aes(x = gdpPercap, y = lifeExp, size = pop, color = continent)) +
+  geom_point() + 
+  labs(x = "Ingreso promedio (
+       USD)", y = "Expectativa de vida al nacer", title="Esperanza de vida debido al ingreso en 2007",
+       caption="Fuente: Gapminder",
+       color="Continent: ") +
+  theme(legend.position="bottom", 
+        legend.title = element_text(face = "bold", color = "brown2", size= 8), 
+        panel.background = element_rect(fill = "lightblue1", colour = "brown3"), 
+        panel.grid.major = element_line(colour = "blue", linetype = "dotted"))
+dfp1
+```
+
+  
+dfp2 =
+  ggplot(df_g, aes(x = gdpPercap, y = lifeExp, 
+             size=pop, color=continent)) +
+  geom_point() + 
+  geom_text_repel(aes(label=country), size = 1.5) +
+  scale_x_continuous(limits = c(5000, 8000)) +
+  scale_y_continuous(limits = c(70, 80)) +
+  guides(size=FALSE) + 
+  
+  theme(legend.position = "none",
+        axis.title = element_blank(),
+        legend.title = element_text(face = "bold", color = "black", size= 8), 
+        panel.background = element_rect(fill = "white", colour = "grey80"), 
+        panel.grid.major = element_line(colour = "grey90", linetype = "dotted"))
+embeb = esp1 + annotation_custom(ggplotGrob(esp2), 
+                            xmin = 20000, xmax = 30000, 
+                            ymin = 40, ymax = 60)
+embeb
+  
+```
