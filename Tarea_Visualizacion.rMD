@@ -135,3 +135,16 @@ dispercion <- ggscatter(mtcars, x = "wt", y = "mpg", add = "reg.line", conf.int 
             title = element_text(size = 8))
 dispercion
 ```
+## Gráfico de puntos
+```{r}
+Puntos <- ggdotplot(ToothGrowth, x = "dose", y = "len", 
+                color = "dose",
+                palette = "mpg", 
+                binwidth = 1) +
+      labs(title = "Efecto de la vitamina C en el crecimiento del diente", x = "Dosis de vitamina C (mg)", y = "Longitud del diente (mm)")+
+    scale_color_manual(values = c( "blue1","brown1", "brown4")) +
+            theme(axis.text = element_text(size = 8),
+            axis.title = element_text(size = 8),
+            title = element_text(size = 8))
+Puntos
+```
