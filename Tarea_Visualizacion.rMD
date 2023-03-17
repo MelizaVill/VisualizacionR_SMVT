@@ -148,3 +148,33 @@ Puntos <- ggdotplot(ToothGrowth, x = "dose", y = "len",
             title = element_text(size = 8))
 Puntos
 ```
+
+```{r}
+## Gráfica zoom 
+set.seed(42)   #semilla
+n <- 1000      #tamaño
+x <- runif(n) * 3  # Valores x, y
+# Función no lineal de x, mas ruido normal
+y <- x * sin(1/x) + rnorm(n) / 25 
+df <- data.frame(x = x, y = y)  
+zoom1 <- ggplot(df, aes(x, y)) + geom_point(alpha = 0.3, col = "brown2") + 
+  geom_smooth(se = FALSE) + theme_classic()  
+#se crea la segunda grafica con limites
+zoom2 <- ggplot(df, aes(x, y)) + geom_point(alpha = 0.3, col = "lightblue2") + geom_smooth(se = FALSE) + 
+  scale_x_continuous(limits = c(0, 0.5)) +
+  scale_y_continuous(limits = c(-0.5, 0.5)) + 
+  labs(x = NULL, y = NULL) + theme_classic() 
+zoom1
+zoom2
+```
+```{r}
+# Se combinan las dos gráficas usando annotation_custom()
+Z <- zoom1 + annotation_custom(ggplotGrob(zoom2), xmin = 1, xmax = 2, ymin = -0.5, ymax = 0.5) +
+  labs(title = "Relación no lineal y oscilante entre x,y con zoom en la región baja x") + theme_dark() + theme(axis.text = element_text(size = 8),
+            axis.title = element_text(size = 8),
+            title = element_text(size = 5))
+Z
+```
+
+
+
