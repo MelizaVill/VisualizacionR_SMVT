@@ -1,9 +1,11 @@
 ---
 title: '**TAREA_CURSO_R**'
-subtitle: '**Visualización**'
 author: "Sthefanny Meliza Villa Toledo"
 date: "2023-03-03"
-output: html_document
+output:
+  pdf_document: default
+  html_document: null
+subtitle: '**Visualización**'
 ---
 
 ```{r}
@@ -97,7 +99,7 @@ cars1<-ggplot(mtcars, aes(x = name, y = mpg, fill = cyl)) +
             title = element_text(size = 8))
 cars1
 ```
-```{r, barplot}
+```{r, barplot2}
 cars2<-ggplot(mtcars, aes(x = reorder(name, mpg), y = mpg, fill = cyl)) + 
   geom_bar(stat = "identity", position = "dodge") + 
   theme(legend.position = "left", 
@@ -255,7 +257,7 @@ dfp2
 ```
 
 ```{r}
-embeb = esp1 + annotation_custom(ggplotGrob(esp2), 
+embeb = dfp1 + annotation_custom(ggplotGrob(dfp2), 
                         xmin = 30000, xmax = 50000, 
                         ymin = 40, ymax = 70)
 embeb
