@@ -13,6 +13,19 @@ Este repositorio replican y analizan algunas gráficas que muestran la relación
 * Memoria instalada: 3,00 GB
 * Tipo de sistema Operativo: Sistema operativo de 64 bits, procesador basado en x64
 ## Librerias utilizadas 
+library(readr)
+
+library(RCurl)
+
+library(ggplot2)
+
+library(dplyr)
+
+library(ggpubr)
+
+library(datasets)
+
+library(gridExtra)
 
 ## Data utilizada
 **ToothGrowth-mtcars-Diamonds-Gapminder**  
