@@ -13,14 +13,13 @@ Este repositorio replican y analizan algunas gráficas que muestran la relación
 * Memoria instalada: 3,00 GB
 * Tipo de sistema Operativo: Sistema operativo de 64 bits, procesador basado en x64
 ## Librerias utilizadas 
-r datos con funciones verbales.
+
 ## Data utilizada
-**ToothGrowth:**  
-**mtcars:** 
-**Diamonds:** 
-**Gapminder**  
-## Los resultados de las gráficas 
-Imagenes
+**ToothGrowth-mtcars-Diamonds-Gapminder**  
+## Tarea
+1 Gráfica compuesta
+
+2 Gráfica embebida
 
 
 
